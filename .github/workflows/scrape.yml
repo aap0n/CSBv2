@@ -21,17 +21,14 @@ jobs:
       - name: Scrape all terms
         run: python3 scraper/scrape.py --out-dir data
 
-      - name: Commit data if changed
+      - name: Commit data
         # Run even if a term failed its sanity guard: successful terms still
-        # land, and the red run flags the failure.
+        # land, and the red run flags the failure. Commits every run (empty
+        # commit if nothing changed) so each scrape is recorded in history.
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- data; then
-            echo "No data changes"
-          else
-            git add data
-            git commit -m "Update course data ($(date -u +%Y-%m-%d))"
-            git push
-          fi
+          git add data
+          git commit --allow-empty -m "Scrape course data ($(date -u '+%Y-%m-%d %H:%M UTC'))"
+          git push
