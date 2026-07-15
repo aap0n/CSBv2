@@ -1,0 +1,20 @@
+{
+ "updated": "2026-07-15",
+ "terms": [
+  {
+   "code": "202620",
+   "name": "Summer 2026 (May-August)",
+   "sections": 1067
+  },
+  {
+   "code": "202630",
+   "name": "Fall 2026 (September-December)",
+   "sections": 4233
+  },
+  {
+   "code": "202710",
+   "name": "Winter 2027 (January-April)",
+   "sections": 4066
+  }
+ ]
+}
